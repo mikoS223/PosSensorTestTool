@@ -17,11 +17,17 @@ radious = 65
 separate = np.zeros(3)
 
 ser = serial.Serial("COM4", 115200, timeout=100)
-while(1):
-    index = -1
-    data = ser.readlines(250)
-    for i in range(12):
 
+while(1):
+    time.sleep(0.1)
+   # ser.flush()
+    index = -1
+    ser.write(b'a')
+
+    # data = ser.read(150)
+    data = ser.readlines(145)
+
+    for i in range(7):
         decoded = data[i].decode('utf8')
 
         if ";" in decoded:
@@ -66,4 +72,15 @@ while(1):
 
     os.system('cls')
     print(rawPoints.round())
-    time.sleep(0.01)
+    # print(data[0])
+    # print(data[1])
+    # print(data[2])
+    # print(data[3])
+    # print(data[4])
+    # print(data[5])
+    # print(data[6])
+    # print(data[7])
+
+  #  print(" ")
+#    ser.reset_input_buffer()
+  #  time.sleep(1)
